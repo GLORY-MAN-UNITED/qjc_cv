@@ -20,9 +20,10 @@ const data = {
     "中英双语材料展示"
   ],
   aboutParagraphs: [
-    "目前在南洋理工大学 Computational Finance Centre 攻读 Blockchain Technology 硕士，本科毕业于北京邮电大学计算机科学与技术专业。",
-    "我更在意的不只是把功能做出来，还包括把需求拆清楚、把用户流程讲顺、把 demo 的视觉和节奏组织成完整作品。",
-    "这版页面基于仓库里的真实素材重新整理，重点展示个人照片、比赛证明、项目截图和文档内容，而不是继续沿用通用简历模板。"
+    "瞿嘉辰，NTU计算机科学与技术区块链方向硕士在读，BUPT 计算机科学与技术本科。",
+    "掌握Python/Golang/Solidity 等多语言；掌握智能合约、全栈开发、分布式数据处理；英语工作可通。",
+    "曾任职字节跳动大数据开发，参与广告数仓与实时数据流建设；Alpha Ladder全栈开发实习，参与NFDT-RWA平台全栈开发，主导合约与协议设计。北航研究阶段聚焦AI赋能智能合约漏洞检测，参与国际会议论文撰写；Seth公链生态联合创始人。",
+    "科研成果：第一作者发表大数据领域论文（CONF-CDS 2024），参与智能合约安全相关论文投递。"
   ],
   aboutFacts: [
     {
@@ -46,13 +47,13 @@ const data = {
     {
       period: "2025.08 - 2027.01",
       title: "南洋理工大学",
-      meta: "Blockchain Technology 硕士 · Computational Finance Centre · 新加坡",
+      meta: "Blockchain Technology 硕士 <br> Centre in Computational Technologies for Finance <br> 新加坡",
       note: "延续区块链技术与金融科技方向的学习与实践，把比赛、原型和研究经历继续串联起来。"
     },
     {
       period: "2021.09 - 2025.06",
       title: "北京邮电大学",
-      meta: "计算机科学与技术本科 · 计算机学院（国家示范性软件学院）",
+      meta: "计算机科学与技术本科 <br> 计算机学院（国家示范性软件学院）",
       note: "GPA 86/100；机器学习 97，大数据技术基础 100，网络存储技术 95。"
     }
   ],
@@ -76,27 +77,55 @@ const data = {
   ],
   internships: [
     {
-      title: "区块链方向 Research Assistant",
-      organization: "北京航空航天大学（BUAA）",
-      period: "已确认经历",
-      tag: "Research",
+      title: "量化交易系统研发",
+      organization: "NTU 研究助理 · 新加坡",
+      period: "2026.01 - 至今",
+      tag: "Research Assistant",
+      image: "asset/experience/ntu-snz.png",
       summary:
-        "根据现有素材，已确认曾参与 BUAA 的区块链方向 RA 工作；这段经历也成为后续 Web3 比赛与项目实践的研究基础。",
+        "参与 SNZ Capital 投资的核心团队，负责量化交易系统的开发工作，完成高并发交易系统的全流程构建。",
       details: [
-        "围绕区块链方向持续积累技术理解与问题拆解能力。",
-        "当前页面先展示已确认信息，后续可继续补充更完整的课题、周期与成果。"
+        "参与系统架构设计、核心模块开发及性能优化，推动 Funding Rate Arbitrage 量化策略的工程化落地。",
+        "重点优化高并发交易场景下的系统延迟与执行效率，提升交易系统的稳定性与实时性。"
       ]
     },
     {
-      title: "Web3 产品与原型协作",
-      organization: "Hackathon / Prototype Collaboration",
-      period: "2025 - 2026",
-      tag: "Builder",
+      title: "全栈开发实习生",
+      organization: "Alpha Ladder Group（前新加坡MVGX科技集团） · 新加坡",
+      period: "2025.10 - 至今",
+      tag: "Full Stack Developer",
+      image: "asset/experience/alpha-ladder.png",
       summary:
-        "围绕支付链路、AI Agent、内容激励等主题持续参与原型制作与展示，角色覆盖产品梳理、界面表达和 demo 叙事。",
+        "深度参与 NFDT-RWA 资产通证化平台的全生命周期开发，负责前端、后端、数据库设计以及服务器部署与运维等全栈模块的实现。",
       details: [
-        "从用户路径、业务逻辑到演示材料进行统一整理。",
-        "更偏好做成“可展示、可解释、可继续扩展”的作品，而不是单点功能截图。"
+        "主导 NFDT 底层协议设计，并使用 Solidity 开发链上智能合约。",
+        "实现真实世界资产（RWA）的链上通证发行与管理逻辑，为平台的资产数字化和链上管理提供核心技术支持。"
+      ]
+    },
+    {
+      title: "研究助理 - MartrixLab区块链",
+      organization: "北京航空航天大学未来区块链与隐私计算高精尖创新中心",
+      period: "2025.07 - 2025.12",
+      tag: "Research",
+      image: "asset/experience/buaa.png",
+      summary:
+        "方向：AI 赋能智能合约漏洞检测。参与论文 SmartAuditor 实验设计与撰写，已投递国际会议。",
+      details: [
+        "基于 Solidity 构建 AST 抽象语法树、CFG 控制流图多模态数据集。",
+        "使用 GNN、BiGRU-Attention 优化合约语义理解与漏洞特征提取能力。"
+      ]
+    },
+    {
+      title: "大数据开发实习生",
+      organization: "北京字节跳动科技有限公司 · 商业数据平台-数据应用与工程",
+      period: "2024.01 - 2024.06",
+      tag: "Data Engineer",
+      image: "asset/experience/bytedance.png",
+      summary:
+        "参与广告业务离线数据仓库建设与实时数据流字段迭代，负责数据清洗与任务调度，保障广告数据链路的稳定运行。",
+      details: [
+        "支持 AD2.0 巨量引擎的广告策略产品的大数据存储、计算、分析与查询服务，提升数据可用性与分析效率。",
+        "在实践中熟练掌握企业级大数据技术栈，包括离线与实时计算框架、数据仓库架构及调度系统（Apache Hive, Apache Spark 等）。"
       ]
     }
   ],
@@ -374,18 +403,29 @@ function renderInternships(items) {
   internshipList.innerHTML = items
     .map(
       (item) => `
-        <article class="experience-card reveal">
-          <div class="experience-top">
-            <div>
-              <h3>${item.title}</h3>
-              <div class="experience-meta">${item.organization} · ${item.period}</div>
+        <article class="experience-card reveal ${item.image ? "has-image" : ""}">
+          ${
+            item.image
+              ? `
+            <div class="experience-visual">
+              <img src="${item.image}" alt="${item.title} 封面" loading="lazy">
             </div>
-            <span class="experience-tag">${item.tag}</span>
+          `
+              : ""
+          }
+          <div class="experience-content">
+            <div class="experience-top">
+              <div>
+                <h3>${item.title}</h3>
+                <div class="experience-meta">${item.organization} · ${item.period}</div>
+              </div>
+              <span class="experience-tag">${item.tag}</span>
+            </div>
+            <p class="experience-summary">${item.summary}</p>
+            <ul class="experience-details">
+              ${item.details.map((detail) => `<li>${detail}</li>`).join("")}
+            </ul>
           </div>
-          <p class="experience-summary">${item.summary}</p>
-          <ul class="experience-details">
-            ${item.details.map((detail) => `<li>${detail}</li>`).join("")}
-          </ul>
         </article>
       `
     )
@@ -412,11 +452,17 @@ function renderLinks(links = []) {
   `;
 }
 
-function renderShowcases(container, items) {
+function renderShowcases(container, items, options = {}) {
+  const { autoplay = false } = options;
+
   container.innerHTML = items
     .map(
       (item, index) => `
-        <article class="showcase-card reveal" data-gallery-card="${index}">
+        <article
+          class="showcase-card reveal"
+          data-gallery-card="${index}"
+          data-gallery-autoplay="${autoplay}"
+        >
           <div class="showcase-gallery">
             <div class="showcase-main">
               <img
@@ -477,19 +523,159 @@ function renderClosingTags(items) {
 }
 
 function attachGalleryEvents() {
-  document.querySelectorAll("[data-gallery-card]").forEach((card) => {
+  const cards = document.querySelectorAll("[data-gallery-card]");
+  
+  cards.forEach((card) => {
     const mainImage = card.querySelector("[data-gallery-main]");
     const thumbButtons = [...card.querySelectorAll("[data-gallery-thumb]")];
+    
+    if (thumbButtons.length <= 1) return;
 
-    thumbButtons.forEach((button) => {
-      button.addEventListener("click", () => {
+    let currentIndex = 0;
+    let autoSlideInterval = null;
+    let isUserInteracted = false;
+
+    function goToSlide(index) {
+      if (currentIndex === index && !mainImage.classList.contains("is-animating")) return;
+      
+      mainImage.classList.add("is-animating");
+      
+      setTimeout(() => {
+        currentIndex = index;
+        const button = thumbButtons[currentIndex];
+        if (!button) return;
+
         mainImage.src = button.dataset.src;
         mainImage.alt = button.dataset.alt;
 
         thumbButtons.forEach((thumb) => thumb.classList.remove("is-active"));
         button.classList.add("is-active");
+
+        mainImage.classList.remove("is-animating");
+      }, 300);
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % thumbButtons.length;
+      goToSlide(currentIndex);
+    }
+
+    function startAutoSlide() {
+      if (isUserInteracted) return;
+      if (autoSlideInterval) clearInterval(autoSlideInterval);
+      autoSlideInterval = setInterval(nextSlide, 2000);
+    }
+
+    function stopAutoSlide() {
+      if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = null;
+      }
+    }
+
+    thumbButtons.forEach((button, index) => {
+      button.addEventListener("click", () => {
+        isUserInteracted = true;
+        stopAutoSlide();
+        goToSlide(index);
       });
     });
+
+    card.addEventListener("mouseenter", stopAutoSlide);
+    card.addEventListener("mouseleave", () => {
+      if (!isUserInteracted) startAutoSlide();
+    });
+
+    // 初始启动
+    startAutoSlide();
+  });
+}
+
+function attachShowcaseGalleryEvents() {
+  const cards = document.querySelectorAll("[data-gallery-card]");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  cards.forEach((card) => {
+    const mainImage = card.querySelector("[data-gallery-main]");
+    const thumbButtons = [...card.querySelectorAll("[data-gallery-thumb]")];
+    const shouldAutoplay =
+      card.dataset.galleryAutoplay === "true" &&
+      thumbButtons.length > 1 &&
+      !prefersReducedMotion;
+
+    if (!mainImage || thumbButtons.length <= 1) {
+      return;
+    }
+
+    let currentIndex = 0;
+    let autoSlideInterval = null;
+    let animationTimeout = null;
+
+    function goToSlide(index) {
+      const button = thumbButtons[index];
+
+      if (!button || index === currentIndex || mainImage.classList.contains("is-animating")) {
+        return;
+      }
+
+      if (animationTimeout) {
+        clearTimeout(animationTimeout);
+      }
+
+      mainImage.classList.add("is-animating");
+
+      animationTimeout = setTimeout(() => {
+        currentIndex = index;
+        mainImage.src = button.dataset.src || "";
+        mainImage.alt = button.dataset.alt || "";
+
+        thumbButtons.forEach((thumb) => thumb.classList.remove("is-active"));
+        button.classList.add("is-active");
+
+        mainImage.classList.remove("is-animating");
+      }, 300);
+    }
+
+    function nextSlide() {
+      goToSlide((currentIndex + 1) % thumbButtons.length);
+    }
+
+    function startAutoSlide() {
+      if (!shouldAutoplay) {
+        return;
+      }
+
+      if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+      }
+
+      autoSlideInterval = setInterval(nextSlide, 2400);
+    }
+
+    function stopAutoSlide() {
+      if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = null;
+      }
+    }
+
+    thumbButtons.forEach((button, index) => {
+      button.addEventListener("click", () => {
+        goToSlide(index);
+        startAutoSlide();
+      });
+    });
+
+    card.addEventListener("mouseenter", stopAutoSlide);
+    card.addEventListener("mouseleave", startAutoSlide);
+    card.addEventListener("focusin", stopAutoSlide);
+    card.addEventListener("focusout", (event) => {
+      if (!card.contains(event.relatedTarget)) {
+        startAutoSlide();
+      }
+    });
+
+    startAutoSlide();
   });
 }
 
@@ -562,10 +748,10 @@ function init() {
   renderEducation(data.education);
   renderFocus(data.focus);
   renderInternships(data.internships);
-  renderShowcases(competitionList, data.competitions);
-  renderShowcases(projectList, data.projects);
+  renderShowcases(competitionList, data.competitions, { autoplay: true });
+  renderShowcases(projectList, data.projects.slice(0, -2));
   renderClosingTags(data.closingTags);
-  attachGalleryEvents();
+  attachShowcaseGalleryEvents();
   attachRevealObserver();
   attachSectionObserver();
 }
