@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>瞿嘉辰 | 个人主页</title>
+  <meta
+    id="page-description"
+    name="description"
+    content="瞿嘉辰的个人作品集页面，包含关于我、实习经历、参与比赛与项目经历，并接入 asset 目录中的图片与文档素材。"
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="回到顶部">
+        <span class="brand-mark">QJ</span>
+        <span class="brand-copy">
+          <strong>瞿嘉辰</strong>
+          <span>Portfolio</span>
+        </span>
+      </a>
+
+      <nav class="nav-links" id="site-nav" aria-label="页面导航">
+        <a href="#about">关于我</a>
+        <a href="#internships">实习经历</a>
+        <a href="#competitions">参与比赛</a>
+        <a href="#projects">项目经历</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero reveal">
+        <div class="hero-copy">
+          <p class="eyebrow">Blockchain / Product / Demo</p>
+          <h1>瞿嘉辰</h1>
+          <p class="hero-role">把 Web3 项目做成能讲清楚、能展示、能落地的页面与故事。</p>
+          <p class="hero-summary">
+            目前聚焦区块链技术、产品结构与视觉表达。在南洋理工大学继续深耕 Blockchain
+            Technology，也持续把比赛、原型和界面探索整理成更完整的作品。
+          </p>
+
+          <div class="hero-actions">
+            <a class="primary-link" href="#competitions">看比赛</a>
+            <a class="secondary-link" href="#projects">看项目</a>
+          </div>
+
+          <div class="hero-metrics" id="hero-metrics"></div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="portrait-shell">
+            <img
+              src="asset/me/315a1b7e8bf7244eabcbd1dfc0b4cb04.jpg"
+              alt="瞿嘉辰个人照片"
+            >
+          </div>
+
+          <div class="signal-card">
+            <p class="signal-kicker">当前聚焦</p>
+            <ul class="signal-list" id="signal-list"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="about">
+        <div class="section-heading">
+          <p class="section-kicker">About</p>
+          <h2>关于我</h2>
+          <p>
+            这一版页面不再是通用简历模板，而是围绕个人照片、比赛证明、项目截图和文档素材整理出的作品集首页。
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="panel biography-card">
+            <div class="panel-head">
+              <p class="panel-kicker">Introduction</p>
+              <h3>自我介绍</h3>
+            </div>
+            <div class="biography-copy" id="about-paragraphs"></div>
+            <div class="fact-grid" id="about-facts"></div>
+          </article>
+
+          <article class="panel education-card">
+            <div class="panel-head">
+              <p class="panel-kicker">Education</p>
+              <h3>教育背景</h3>
+            </div>
+            <div class="education-list" id="education-list"></div>
+          </article>
+
+          <article class="panel focus-card">
+            <div class="panel-head">
+              <p class="panel-kicker">Focus</p>
+              <h3>我在做什么</h3>
+            </div>
+            <div class="focus-grid" id="focus-list"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="internships">
+        <div class="section-heading">
+          <p class="section-kicker">Experience</p>
+          <h2>实习经历</h2>
+          <p>
+            仓库里没有完整的实习简历文本，所以这里优先呈现已确认的研究/实践经历，避免为了填版面编造细节。
+          </p>
+        </div>
+
+        <div class="experience-grid" id="internship-list"></div>
+      </section>
+
+      <section class="section reveal" id="competitions">
+        <div class="section-heading">
+          <p class="section-kicker">Competitions</p>
+          <h2>参与比赛</h2>
+          <p>
+            比赛区按“事件视角”组织，重点展示成绩、现场照片、证书以及比赛中产出的核心画面。
+          </p>
+        </div>
+
+        <div class="showcase-stack" id="competition-list"></div>
+      </section>
+
+      <section class="section reveal" id="projects">
+        <div class="section-heading">
+          <p class="section-kicker">Projects</p>
+          <h2>项目经历</h2>
+          <p>
+            项目区按“作品视角”整理，突出产品逻辑、界面统一性和你在 demo 中真正能拿出来讲的部分。
+          </p>
+        </div>
+
+        <div class="showcase-stack" id="project-list"></div>
+      </section>
+
+      <section class="closing reveal">
+        <div class="closing-card">
+          <p class="section-kicker">Material Ready</p>
+          <h2>页面已接入 `asset` 目录中的主要素材</h2>
+          <p>
+            当前已经把个人照片、比赛图片、证书、聊天截图、项目界面和演示文档链接挂到页面上。后续如果你补一版完整的实习文案或联系方式，我可以继续把它收成正式求职版。
+          </p>
+          <div class="tag-row" id="closing-tags"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
