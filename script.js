@@ -2,22 +2,22 @@ const data = {
   heroMetrics: [
     {
       value: "NTU",
-      label: "Blockchain Technology MSc"
+      label: "区块链技术硕士"
     },
     {
       value: "BUPT",
-      label: "Computer Science BSc"
+      label: "计算机科学与技术学士"
     },
     {
-      value: "Runner-up",
+      value: "亚军",
       label: "NTU x BASE Web3 Hackathon · 2025-08-26"
     }
   ],
   signalList: [
-    "Web3 产品与叙事表达",
-    "比赛 Demo 组织与推进",
-    "Dashboard / Wallet / Payment Flow",
-    "中英双语材料展示"
+    "大数据开发与数仓建设",
+    "智能合约开发",
+    "AI赋能智能合约安全研究",
+    "AI agent与区块链产品建设"
   ],
   aboutParagraphs: [
     "瞿嘉辰，NTU计算机科学与技术区块链方向硕士在读，BUPT 计算机科学与技术本科。",
@@ -28,7 +28,7 @@ const data = {
   aboutFacts: [
     {
       label: "当前方向",
-      value: "Blockchain / Product / Project Flow"
+      value: " 大数据开发 / 后端开发 / 智能合约开发与安全研究/ 全栈开发"
     },
     {
       label: "教育路径",
@@ -36,11 +36,11 @@ const data = {
     },
     {
       label: "实践形式",
-      value: "Hackathon / Prototype / Research"
+      value: "Hackathon / 实习 / 科研"
     },
     {
-      label: "作品偏好",
-      value: "Dark UI / Storytelling / Demo Ready"
+      label: "编程语言",
+      value: "Python / Golang / Solidity/ SQL/ JavaScript"
     }
   ],
   education: [
@@ -205,6 +205,14 @@ const data = {
         {
           src: "asset/hackathon/token2049/image.png",
           alt: "web3Joeypouch 产品界面截图"
+        },
+        {
+          src: "asset/hackathon/token2049/268dedd5f0bf9a7f0364ce2593d4d569.jpg",
+          alt: "TOKEN2049 现场照片 1"
+        },
+        {
+          src: "asset/hackathon/token2049/2894e7b4a69c84c14674cd3099793292.jpg",
+          alt: "TOKEN2049 现场照片 2"
         }
       ],
       links: [
@@ -387,6 +395,10 @@ function renderEducation(items) {
 }
 
 function renderFocus(items) {
+  if (!focusList) {
+    return;
+  }
+
   focusList.innerHTML = items
     .map(
       (item) => `
@@ -519,7 +531,78 @@ function renderShowcases(container, items, options = {}) {
 }
 
 function renderClosingTags(items) {
+  if (!closingTags) {
+    return;
+  }
+
   closingTags.innerHTML = items.map((item) => `<span class="tag">${item}</span>`).join("");
+}
+
+function createParticleField() {
+  const field = document.getElementById("particle-field");
+
+  if (!field || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  const particleCount = window.innerWidth < 720 ? 14 : 24;
+
+  field.innerHTML = Array.from({ length: particleCount }, (_, index) => {
+    const x = Math.round((index / particleCount) * 100 + Math.random() * 8);
+    const y = Math.round(Math.random() * 100);
+    const size = (Math.random() * 3.4 + 2.2).toFixed(2);
+    const delay = (Math.random() * 10).toFixed(2);
+    const duration = (Math.random() * 5 + 4.5).toFixed(2);
+
+    return `
+      <span
+        class="particle"
+        style="--x:${Math.min(x, 100)}; --y:${y}; --size:${size}; --delay:${delay}; --duration:${duration};"
+      ></span>
+    `;
+  }).join("");
+}
+
+function attachIntroSequence() {
+  const introScreen = document.getElementById("intro-screen");
+  const introName = document.getElementById("intro-name");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const introTotalDuration = 3000;
+  const introFadeDuration = 760;
+  const introTypeStartDelay = 240;
+
+  if (!introScreen || !introName) {
+    document.body.classList.remove("is-intro-active");
+    return;
+  }
+
+  const fullText = introName.dataset.text || "\u77BF\u5609\u8FB0";
+
+  if (prefersReducedMotion) {
+    introName.textContent = fullText;
+    introScreen.remove();
+    document.body.classList.remove("is-intro-active");
+    return;
+  }
+
+  introName.textContent = "";
+  const typingWindow = Math.max(introTotalDuration - introFadeDuration - introTypeStartDelay - 540, 900);
+  const stepDuration = fullText.length > 1 ? Math.floor(typingWindow / (fullText.length - 1)) : typingWindow;
+
+  [...fullText].forEach((character, index) => {
+    window.setTimeout(() => {
+      introName.textContent += character;
+    }, introTypeStartDelay + index * stepDuration);
+  });
+
+  window.setTimeout(() => {
+    introScreen.classList.add("is-hidden");
+    document.body.classList.remove("is-intro-active");
+
+    window.setTimeout(() => {
+      introScreen.remove();
+    }, introFadeDuration);
+  }, introTotalDuration - introFadeDuration);
 }
 
 function attachGalleryEvents() {
@@ -741,7 +824,22 @@ function attachSectionObserver() {
 }
 
 function init() {
-  renderHeroMetrics(data.heroMetrics);
+  createParticleField();
+  attachIntroSequence();
+  renderHeroMetrics(
+    data.heroMetrics.map((item) => ({
+      ...item,
+      value: item.value === "Runner-up" ? "亚军" : item.value,
+      label:
+        item.label === "Blockchain Technology MSc"
+          ? "区块链技术硕士"
+          : item.label === "Computer Science BSc"
+            ? "计算机科学与技术学士"
+            : item.label === "NTU x BASE Web3 Hackathon 路 2025-08-26"
+              ? "NTU x BASE Web3 黑客松 · 2025-08-26"
+              : item.label
+    }))
+  );
   renderSignalList(data.signalList);
   renderParagraphs(data.aboutParagraphs);
   renderFacts(data.aboutFacts);
@@ -749,7 +847,13 @@ function init() {
   renderFocus(data.focus);
   renderInternships(data.internships);
   renderShowcases(competitionList, data.competitions, { autoplay: true });
-  renderShowcases(projectList, data.projects.slice(0, -2));
+  renderShowcases(
+    projectList,
+    data.projects.slice(0, 1).map((item) => ({
+      ...item,
+      links: []
+    }))
+  );
   renderClosingTags(data.closingTags);
   attachShowcaseGalleryEvents();
   attachRevealObserver();
