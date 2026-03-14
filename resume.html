@@ -12,12 +12,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&display=swap"
     rel="stylesheet"
   >
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="resume-page">
+<body class="resume-page" data-page="resume">
   <div class="page-shell page-shell-resume">
     <div class="scan-beam"></div>
     <div class="tech-orbit orbit-one" aria-hidden="true"></div>
@@ -27,34 +27,43 @@
     <div class="ambient ambient-three" aria-hidden="true"></div>
 
     <header class="site-header">
-      <a class="brand" href="index.html" aria-label="返回作品集">
+      <a
+        class="brand"
+        href="index.html"
+        aria-label="返回作品集"
+        data-i18n-aria-label="resume.brand.ariaLabel"
+      >
         <span class="brand-mark">
-          <img src="asset/me/logo.jpg" alt="瞿嘉辰 Logo">
+          <img src="asset/me/logo.jpg" alt="瞿嘉辰 Logo" data-i18n-alt="common.logoAlt">
         </span>
         <span class="brand-copy">
-          <strong>&#30655;&#22025;&#36784;</strong>
-          <span>&#31616;&#21382;</span>
+          <strong data-i18n="common.name">&#30655;&#22025;&#36784;</strong>
+          <span data-i18n="resume.brand.subtitle">&#31616;&#21382;</span>
         </span>
       </a>
 
-      <nav class="nav-links" aria-label="简历页面导航">
-        <a href="index.html">&#20010;&#20154;&#20027;&#39029;</a>
-        <a
-          class="nav-resume-link"
-          href="./%E7%9E%BF%E5%98%89%E8%BE%B0_%E5%8C%97%E4%BA%AC%E9%82%AE%E7%94%B5%E5%A4%A7%E5%AD%A6_%E5%8D%97%E6%B4%8B%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E6%8A%80%E6%9C%AF.pdf"
-          download="QJ-Chen-Resume.pdf"
-        >
-          下载 PDF
-        </a>
-      </nav>
+      <div class="header-actions">
+        <nav class="nav-links" aria-label="简历页面导航" data-i18n-aria-label="resume.nav.ariaLabel">
+          <a href="index.html" data-i18n="resume.nav.home">&#20010;&#20154;&#20027;&#39029;</a>
+          <a
+            class="nav-resume-link"
+            href="./%E7%9E%BF%E5%98%89%E8%BE%B0_%E5%8C%97%E4%BA%AC%E9%82%AE%E7%94%B5%E5%A4%A7%E5%AD%A6_%E5%8D%97%E6%B4%8B%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E6%8A%80%E6%9C%AF.pdf"
+            download="QJ-Chen-Resume.pdf"
+            data-i18n="resume.nav.download"
+          >
+            下载 PDF
+          </a>
+        </nav>
+        <button class="lang-toggle" id="lang-toggle" type="button" data-lang-toggle>EN</button>
+      </div>
     </header>
 
     <main class="resume-page-layout">
       <section class="section">
         <div class="section-heading">
-          <p class="section-kicker">&#31616;&#21382;</p>
-          <h2>PDF &#31616;&#21382;</h2>
-          <p>
+          <p class="section-kicker" data-i18n="resume.section.kicker">&#31616;&#21382;</p>
+          <h2 data-i18n="resume.section.title">PDF &#31616;&#21382;</h2>
+          <p data-i18n="resume.section.description">
             可直接在线预览原始 PDF，也可以新标签打开或下载。
           </p>
         </div>
@@ -66,6 +75,7 @@
               href="./%E7%9E%BF%E5%98%89%E8%BE%B0_%E5%8C%97%E4%BA%AC%E9%82%AE%E7%94%B5%E5%A4%A7%E5%AD%A6_%E5%8D%97%E6%B4%8B%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E6%8A%80%E6%9C%AF.pdf"
               target="_blank"
               rel="noreferrer"
+              data-i18n="resume.actions.open"
             >
               打开原始 PDF
             </a>
@@ -73,6 +83,7 @@
               class="secondary-link"
               href="./%E7%9E%BF%E5%98%89%E8%BE%B0_%E5%8C%97%E4%BA%AC%E9%82%AE%E7%94%B5%E5%A4%A7%E5%AD%A6_%E5%8D%97%E6%B4%8B%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E6%8A%80%E6%9C%AF.pdf"
               download="QJ-Chen-Resume.pdf"
+              data-i18n="resume.actions.download"
             >
               &#19979;&#36733;&#31616;&#21382;
             </a>
@@ -82,11 +93,14 @@
             <iframe
               src="./%E7%9E%BF%E5%98%89%E8%BE%B0_%E5%8C%97%E4%BA%AC%E9%82%AE%E7%94%B5%E5%A4%A7%E5%AD%A6_%E5%8D%97%E6%B4%8B%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%8E%E6%8A%80%E6%9C%AF.pdf#toolbar=1&navpanes=0&view=FitH"
               title="瞿嘉辰简历 PDF"
+              data-i18n-title="resume.iframeTitle"
             ></iframe>
           </div>
         </article>
       </section>
     </main>
   </div>
+  <script src="translations.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
