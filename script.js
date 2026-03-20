@@ -176,6 +176,23 @@ function formatVisitCounterValue(value) {
   return new Intl.NumberFormat(currentLanguage === "zh" ? "zh-CN" : "en-US").format(value);
 }
 
+function extractVisitCounterValue(payload) {
+  const directValue = Number(payload?.value);
+
+  if (Number.isFinite(directValue)) {
+    return directValue;
+  }
+
+  const upCount = Number(payload?.data?.up_count);
+  const downCount = Number(payload?.data?.down_count);
+
+  if (Number.isFinite(upCount) && Number.isFinite(downCount)) {
+    return upCount - downCount;
+  }
+
+  return null;
+}
+
 function buildVisitCounterMetric() {
   const copy = getVisitCounterCopy();
   const label = copy.label || "Page Views";
@@ -720,7 +737,7 @@ async function initVisitCounter() {
     }
 
     const payload = await response.json();
-    const nextValue = Number(payload?.value);
+    const nextValue = extractVisitCounterValue(payload);
 
     if (!Number.isFinite(nextValue)) {
       throw new Error("Visit counter returned an invalid value");
