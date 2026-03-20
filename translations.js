@@ -89,7 +89,14 @@ window.localizedPageContent = {
       },
       labels: {
         internshipCoverSuffix: "封面",
-        galleryThumbLabel: "切换到图片"
+        galleryThumbLabel: "切换到图片",
+        visitCounter: {
+          label: "\u4e3b\u9875\u8bbf\u95ee\u91cf",
+          note: "\u6bcf\u6b21\u6253\u5f00\u4e3b\u9875\u4f1a\u81ea\u52a8\u7d2f\u52a0",
+          loading: "\u7edf\u8ba1\u4e2d",
+          unavailable: "\u7edf\u8ba1\u670d\u52a1\u6682\u4e0d\u53ef\u7528",
+          local: "\u672c\u5730\u9884\u89c8\u4e0d\u8ba1\u5165"
+        }
       }
     },
     resume: {
@@ -208,7 +215,14 @@ window.localizedPageContent = {
       },
       labels: {
         internshipCoverSuffix: "cover",
-        galleryThumbLabel: "Switch to image"
+        galleryThumbLabel: "Switch to image",
+        visitCounter: {
+          label: "Page Views",
+          note: "Increments on each homepage load",
+          loading: "Loading",
+          unavailable: "Counter unavailable",
+          local: "Local preview only"
+        }
       }
     },
     resume: {

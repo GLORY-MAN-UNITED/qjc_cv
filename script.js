@@ -1,5 +1,8 @@
 const STORAGE_KEY = "qjc-language";
 const DEFAULT_LANGUAGE = "zh";
+const VISIT_COUNTER_NAMESPACE = "qjcportfolio";
+const VISIT_COUNTER_KEY = "homeviews";
+const LOCAL_HOSTS = new Set(["localhost", "127.0.0.1", "::1", "[::1]"]);
 const pageType = document.body.dataset.page || (document.body.classList.contains("resume-page") ? "resume" : "home");
 const isHomePage = pageType === "home";
 
@@ -26,6 +29,10 @@ let revealObserver;
 let sectionObserver;
 let headerResizeObserver;
 let showcaseCleanups = [];
+let visitCounterState = {
+  status: isHomePage ? "loading" : "idle",
+  value: null
+};
 
 function resolveInitialLanguage() {
   try {
@@ -161,6 +168,53 @@ function attachScrollOffsetSync() {
   }
 }
 
+function getVisitCounterCopy() {
+  return getHomeContent().labels?.visitCounter || {};
+}
+
+function formatVisitCounterValue(value) {
+  return new Intl.NumberFormat(currentLanguage === "zh" ? "zh-CN" : "en-US").format(value);
+}
+
+function buildVisitCounterMetric() {
+  const copy = getVisitCounterCopy();
+  const label = copy.label || "Page Views";
+
+  if (visitCounterState.status === "ready" && Number.isFinite(visitCounterState.value)) {
+    return {
+      value: formatVisitCounterValue(visitCounterState.value),
+      label,
+      note: copy.note || ""
+    };
+  }
+
+  if (visitCounterState.status === "local") {
+    return {
+      value: "--",
+      label,
+      note: copy.local || "Local preview only"
+    };
+  }
+
+  if (visitCounterState.status === "error") {
+    return {
+      value: "--",
+      label,
+      note: copy.unavailable || "Counter unavailable"
+    };
+  }
+
+  return {
+    value: "...",
+    label,
+    note: copy.loading || "Loading"
+  };
+}
+
+function getHeroMetricsWithVisitCounter(items = []) {
+  return [...items, buildVisitCounterMetric()];
+}
+
 function renderHeroMetrics(items = []) {
   if (!heroMetrics) {
     return;
@@ -172,6 +226,7 @@ function renderHeroMetrics(items = []) {
         <div class="metric-card">
           <span class="metric-value">${item.value}</span>
           <span class="metric-label">${item.label}</span>
+          ${item.note ? `<span class="metric-note">${item.note}</span>` : ""}
         </div>
       `
     )
@@ -379,7 +434,7 @@ function renderClosingTags(items = []) {
 function renderHomePage() {
   const data = getHomeData();
 
-  renderHeroMetrics(data.heroMetrics);
+  renderHeroMetrics(getHeroMetricsWithVisitCounter(data.heroMetrics));
   renderSignalList(data.signalList);
   renderParagraphs(data.aboutParagraphs);
   renderFacts(data.aboutFacts);
@@ -627,6 +682,60 @@ function attachSectionObserver() {
   sections.forEach((section) => sectionObserver.observe(section));
 }
 
+function shouldCountPageView() {
+  return window.location.protocol !== "file:" && !LOCAL_HOSTS.has(window.location.hostname);
+}
+
+function updateVisitCounterState(nextState) {
+  visitCounterState = {
+    ...visitCounterState,
+    ...nextState
+  };
+
+  if (isHomePage) {
+    renderHeroMetrics(getHeroMetricsWithVisitCounter(getHomeData().heroMetrics));
+  }
+}
+
+async function initVisitCounter() {
+  if (!isHomePage || !heroMetrics) {
+    return;
+  }
+
+  if (!shouldCountPageView()) {
+    updateVisitCounterState({ status: "local", value: null });
+    return;
+  }
+
+  try {
+    const response = await window.fetch(
+      `https://api.counterapi.dev/v1/${encodeURIComponent(VISIT_COUNTER_NAMESPACE)}/${encodeURIComponent(VISIT_COUNTER_KEY)}/up`,
+      {
+        cache: "no-store"
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Visit counter request failed: ${response.status}`);
+    }
+
+    const payload = await response.json();
+    const nextValue = Number(payload?.value);
+
+    if (!Number.isFinite(nextValue)) {
+      throw new Error("Visit counter returned an invalid value");
+    }
+
+    updateVisitCounterState({
+      status: "ready",
+      value: nextValue
+    });
+  } catch (error) {
+    console.warn("Failed to update homepage visit counter.", error);
+    updateVisitCounterState({ status: "error", value: null });
+  }
+}
+
 function applyLanguage(language, options = {}) {
   currentLanguage = normalizeLanguage(language);
 
@@ -654,6 +763,7 @@ function init() {
     createParticleField();
     attachIntroSequence();
     attachSectionObserver();
+    initVisitCounter();
   }
 }
 

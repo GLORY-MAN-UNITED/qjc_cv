@@ -1,3 +1,5 @@
 .server-*.log
 .tmp_pptx/
 .tmp_pptx.zip
+.codex
+/openspec
